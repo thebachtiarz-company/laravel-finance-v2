@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TheBachtiarz\Finance\Services;
 
+use TheBachtiarz\Base\App\Http\Requests\Rules\PaginateRule;
 use TheBachtiarz\Base\App\Libraries\Curl\Data\CurlResponseInterface;
 use TheBachtiarz\Base\App\Services\AbstractService;
 use TheBachtiarz\Finance\Libraries\CurlFinanceLibrary;
@@ -25,12 +26,15 @@ class FinanceService extends AbstractService
      *
      * @return array
      */
-    public function ownerDetail(string $ownerCode): array
+    public function ownerDetail(string $ownerCode, string $paginateOptions = '{}'): array
     {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
                 path: 'owner-detail',
-                data: ['owner_code' => $ownerCode],
+                data: [
+                    'owner_code' => $ownerCode,
+                    PaginateRule::INPUT_ATTRIBUTESPAGINATEOPTIONS => $paginateOptions,
+                ],
             ),
         );
     }
@@ -97,12 +101,21 @@ class FinanceService extends AbstractService
      *
      * @return array
      */
-    public function purposeByOwner(string $ownerCode): array
-    {
+    public function purposeByOwner(
+        string $ownerCode,
+        string $perPage = '15',
+        string $currentPage = '1',
+        string $sortOptions = '{}',
+    ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
                 path: 'purpose-by-owner',
-                data: ['ownerCode' => $ownerCode],
+                data: [
+                    'ownerCode' => $ownerCode,
+                    PaginateRule::INPUT_PERPAGE => $perPage,
+                    PaginateRule::INPUT_CURRENTPAGE => $currentPage,
+                    PaginateRule::INPUT_SORTOPTIONS => $sortOptions,
+                ],
             ),
         );
     }
@@ -264,6 +277,11 @@ class FinanceService extends AbstractService
         string $ownerCode,
         string $purposeCode,
         string $financeCode,
+        string $perPage = '15',
+        string $currentPage = '1',
+        string $sortOptions = '{}',
+        string $dateFrom = '',
+        string $dateTo = '',
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
@@ -272,6 +290,11 @@ class FinanceService extends AbstractService
                     'owner_code' => $ownerCode,
                     'purpose_code' => $purposeCode,
                     'finance_code' => $financeCode,
+                    PaginateRule::INPUT_PERPAGE => $perPage,
+                    PaginateRule::INPUT_CURRENTPAGE => $currentPage,
+                    PaginateRule::INPUT_SORTOPTIONS => $sortOptions,
+                    'date_from' => $dateFrom,
+                    'date_to' => $dateTo,
                 ],
             ),
         );
@@ -285,6 +308,11 @@ class FinanceService extends AbstractService
     public function transactionFinanceInPurpose(
         string $ownerCode,
         string $purposeCode,
+        string $perPage = '15',
+        string $currentPage = '1',
+        string $sortOptions = '{}',
+        string $dateFrom = '',
+        string $dateTo = '',
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
@@ -292,6 +320,11 @@ class FinanceService extends AbstractService
                 data: [
                     'owner_code' => $ownerCode,
                     'purpose_code' => $purposeCode,
+                    PaginateRule::INPUT_PERPAGE => $perPage,
+                    PaginateRule::INPUT_CURRENTPAGE => $currentPage,
+                    PaginateRule::INPUT_SORTOPTIONS => $sortOptions,
+                    'date_from' => $dateFrom,
+                    'date_to' => $dateTo,
                 ],
             ),
         );

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace TheBachtiarz\Finance\Libraries\Transactions;
 
+use TheBachtiarz\Base\App\Libraries\Curl\CurlInterface;
 use TheBachtiarz\Base\App\Libraries\Curl\Data\CurlResponseInterface;
 use TheBachtiarz\Finance\Libraries\AbstractFinanceLibrary;
 
-class TransactionFinanceInPurpose extends AbstractFinanceLibrary
+class TransactionFinanceInPurpose extends AbstractFinanceLibrary implements CurlInterface
 {
     // ? Public Methods
 

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace TheBachtiarz\Finance\Libraries\Purposes;
 
+use TheBachtiarz\Base\App\Libraries\Curl\CurlInterface;
 use TheBachtiarz\Base\App\Libraries\Curl\Data\CurlResponseInterface;
 use TheBachtiarz\Finance\Libraries\AbstractFinanceLibrary;
 
-class PurposeCreate extends AbstractFinanceLibrary
+class PurposeCreate extends AbstractFinanceLibrary implements CurlInterface
 {
     // ? Public Methods
 

@@ -30,7 +30,7 @@ class FinanceService extends AbstractService
     {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'owner-detail',
+                path: CurlFinanceLibrary::OWNER_DETAIL_PATH,
                 data: [
                     'owner_code' => $ownerCode,
                     PaginateRule::INPUT_ATTRIBUTESPAGINATEOPTIONS => $paginateOptions,
@@ -48,7 +48,7 @@ class FinanceService extends AbstractService
     {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'owner-create',
+                path: CurlFinanceLibrary::OWNER_CREATE_PATH,
                 data: [
                     'status' => $status,
                     'attributes' => $attributes,
@@ -70,7 +70,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'owner-update',
+                path: CurlFinanceLibrary::OWNER_UPDATE_PATH,
                 data: [
                     'owner_code' => $ownerCode,
                     'status' => $status,
@@ -90,7 +90,7 @@ class FinanceService extends AbstractService
     {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'purpose-detail',
+                path: CurlFinanceLibrary::PURPOSE_DETAIL_PATH,
                 data: ['purpose_code' => $purposeCode],
             ),
         );
@@ -109,7 +109,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'purpose-by-owner',
+                path: CurlFinanceLibrary::PURPOSE_BY_OWNER_PATH,
                 data: [
                     'ownerCode' => $ownerCode,
                     PaginateRule::INPUT_PERPAGE => $perPage,
@@ -132,7 +132,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'purpose-create',
+                path: CurlFinanceLibrary::PURPOSE_CREATE_PATH,
                 data: [
                     'owner_code' => $ownerCode,
                     'information' => $information,
@@ -156,7 +156,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'purpose-update',
+                path: CurlFinanceLibrary::PURPOSE_UPDATE_PATH,
                 data: [
                     'owner_code' => $ownerCode,
                     'purpose_code' => $purposeCode,
@@ -177,7 +177,7 @@ class FinanceService extends AbstractService
     {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'finance-detail',
+                path: CurlFinanceLibrary::FINANCE_DETAIL_PATH,
                 data: ['finance_code' => $financeCode],
             ),
         );
@@ -192,7 +192,7 @@ class FinanceService extends AbstractService
     {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'finance-create',
+                path: CurlFinanceLibrary::FINANCE_CREATE_PATH,
                 data: [
                     'type' => $type,
                     'attributes' => $attributes,
@@ -214,7 +214,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'finance-update',
+                path: CurlFinanceLibrary::FINANCE_UPDATE_PATH,
                 data: [
                     'finance_code' => $financeCode,
                     'type' => $type,
@@ -234,7 +234,7 @@ class FinanceService extends AbstractService
     {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'transaction-detail',
+                path: CurlFinanceLibrary::TRANSACTION_DETAIL_PATH,
                 data: ['reference_code' => $referenceCode],
             ),
         );
@@ -255,7 +255,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'transaction-create',
+                path: CurlFinanceLibrary::TRANSACTION_CREATE_PATH,
                 data: [
                     'owner_code' => $ownerCode,
                     'purpose_code' => $purposeCode,
@@ -285,7 +285,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'transaction-balance-in-purpose',
+                path: CurlFinanceLibrary::TRANSACTION_BALANCE_IN_PURPOSE_PATH,
                 data: [
                     'owner_code' => $ownerCode,
                     'purpose_code' => $purposeCode,
@@ -316,7 +316,7 @@ class FinanceService extends AbstractService
     ): array {
         return $this->processResponseHandler(
             curlResponseInterface: $this->curlFinanceLibrary->execute(
-                path: 'transaction-finance-in-purpose',
+                path: CurlFinanceLibrary::TRANSACTION_FINANCE_IN_PURPOSE_PATH,
                 data: [
                     'owner_code' => $ownerCode,
                     'purpose_code' => $purposeCode,

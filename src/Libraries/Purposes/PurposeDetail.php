@@ -19,7 +19,7 @@ class PurposeDetail extends AbstractFinanceLibrary implements CurlInterface
      */
     public function execute(array $data = []): CurlResponseInterface
     {
-        return $this->setSubUrl('rest/purpose/detail')->setBody($data)->post();
+        return $this->setSubUrl('purpose/detail')->setBody($data)->post();
     }
 
     // ? Protected Methods

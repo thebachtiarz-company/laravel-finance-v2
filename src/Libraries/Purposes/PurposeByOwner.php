@@ -19,7 +19,7 @@ class PurposeByOwner extends AbstractFinanceLibrary implements CurlInterface
      */
     public function execute(array $data = []): CurlResponseInterface
     {
-        return $this->setSubUrl('rest/purpose/list-by-owner')->setBody($data)->post();
+        return $this->setSubUrl('purpose/list-by-owner')->setBody($data)->post();
     }
 
     // ? Protected Methods

@@ -19,7 +19,7 @@ class TransactionDetail extends AbstractFinanceLibrary implements CurlInterface
      */
     public function execute(array $data = []): CurlResponseInterface
     {
-        return $this->setSubUrl('rest/transaction/detail')->setBody($data)->post();
+        return $this->setSubUrl('transaction/detail')->setBody($data)->post();
     }
 
     // ? Protected Methods

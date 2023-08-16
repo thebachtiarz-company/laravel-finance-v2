@@ -17,13 +17,14 @@ abstract class AbstractFinanceLibrary extends AbstractCurl
 
     protected function urlDomainResolver(): string
     {
-        $urlPathName = tbfinanceconfig(keyName: 'is_production_mode', useOrigin: false)
+        $baseUrl = tbfinanceconfig(keyName: 'is_production_mode', useOrigin: false)
             ? 'api_url_production'
             : 'api_url_sandbox';
 
         $this->url = sprintf(
-            '%s/%s',
-            tbfinanceconfig(keyName: $urlPathName, useOrigin: false),
+            '%s/%s/%s',
+            tbfinanceconfig(keyName: $baseUrl, useOrigin: false),
+            'rest',
             $this->getSubUrl(),
         );
 

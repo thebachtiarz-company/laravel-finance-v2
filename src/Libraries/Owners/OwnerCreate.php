@@ -19,7 +19,7 @@ class OwnerCreate extends AbstractFinanceLibrary implements CurlInterface
      */
     public function execute(array $data = []): CurlResponseInterface
     {
-        return $this->setSubUrl('rest/owner/create')->setBody($data)->post();
+        return $this->setSubUrl('owner/create')->setBody($data)->post();
     }
 
     // ? Protected Methods

@@ -19,7 +19,7 @@ class FinanceDetail extends AbstractFinanceLibrary implements CurlInterface
      */
     public function execute(array $data = []): CurlResponseInterface
     {
-        return $this->setSubUrl('rest/finance/detail')->setBody($data)->post();
+        return $this->setSubUrl('finance/detail')->setBody($data)->post();
     }
 
     // ? Protected Methods

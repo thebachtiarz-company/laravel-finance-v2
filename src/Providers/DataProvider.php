@@ -8,7 +8,9 @@ use TheBachtiarz\Base\BaseConfigInterface;
 use TheBachtiarz\Finance\Interfaces\Configs\FinanceConfigInterface;
 
 use function array_merge;
+use function config;
 use function tbbaseconfig;
+use function tbdirlocation;
 
 class DataProvider
 {
@@ -28,6 +30,20 @@ class DataProvider
             BaseConfigInterface::CONFIG_NAME . '.' . BaseConfigInterface::CONFIG_REGISTERED => array_merge(
                 $configRegistered,
                 [FinanceConfigInterface::CONFIG_NAME],
+            ),
+        ];
+
+        // ! Logging
+        $logging          = config('logging.channels');
+        $registerConfig[] = [
+            'logging.channels' => array_merge(
+                $logging,
+                [
+                    'finance' => [
+                        'driver' => 'single',
+                        'path' => tbdirlocation('log/finance.log'),
+                    ],
+                ],
             ),
         ];
 

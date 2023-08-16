@@ -19,7 +19,7 @@ class OwnerUpdate extends AbstractFinanceLibrary implements CurlInterface
      */
     public function execute(array $data = []): CurlResponseInterface
     {
-        return $this->setSubUrl('rest/owner/update')->setBody($data)->post();
+        return $this->setSubUrl('owner/update')->setBody($data)->post();
     }
 
     // ? Protected Methods

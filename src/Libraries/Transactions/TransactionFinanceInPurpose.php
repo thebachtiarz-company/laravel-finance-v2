@@ -19,7 +19,7 @@ class TransactionFinanceInPurpose extends AbstractFinanceLibrary implements Curl
      */
     public function execute(array $data = []): CurlResponseInterface
     {
-        return $this->setSubUrl('rest/transaction/list-finance-in-purpose')->setBody($data)->post();
+        return $this->setSubUrl('transaction/list-finance-in-purpose')->setBody($data)->post();
     }
 
     // ? Protected Methods

@@ -9,6 +9,8 @@ use TheBachtiarz\Base\App\Libraries\Curl\Data\CurlResponseInterface;
 use TheBachtiarz\Base\App\Services\AbstractService;
 use TheBachtiarz\Finance\Libraries\CurlFinanceLibrary;
 
+use function json_encode;
+
 class FinanceService extends AbstractService
 {
     /**
@@ -345,6 +347,8 @@ class FinanceService extends AbstractService
             status: $curlResponseInterface->getStatus(),
             httpCode: $curlResponseInterface->getHttpCode(),
         );
+
+        $this->log(log: json_encode($curlResponseInterface->toArray()), channel: 'finance');
 
         return $curlResponseInterface->toArray();
     }
